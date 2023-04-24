@@ -24,7 +24,7 @@ jobs:
     - name: Test
       run: dotnet test --no-build --verbosity normal
       
-      #build and push artifact of EmployeeManagement.API
+      #publish build and push artifact of EmployeeManagement.API
     - name: Publish EmployeeManagement.API
       run: dotnet publish EmployeeManagement/EmployeeManagement.API/EmployeeManagement.API.csproj -c Release -o EmployeeManagement.API
     
@@ -35,7 +35,7 @@ jobs:
         path: /home/runner/work/EmployeeManagement/EmployeeManagement/EmployeeManagement.API/**
         if-no-files-found: error
       
-      #build and push artifact of EmployeeManagement.Application
+      #publish build and push artifact of EmployeeManagement.Application
     - name: Publish EmployeeManagement.Application
       run: dotnet publish EmployeeManagement/EmployeeManagement.Application/EmployeeManagement.Application.csproj -c Release -o EmployeeManagement.Application
     
@@ -47,7 +47,7 @@ jobs:
         if-no-files-found: error
 
       
-      #build and push artifact of EmployeeManagement.Core
+      #publish build and push artifact of EmployeeManagement.Core
     - name: Publish EmployeeManagement.Core
       run: dotnet publish EmployeeManagement/EmployeeManagement.Core/EmployeeManagement.Core.csproj -c Release -o EmployeeManagement.Core
     
@@ -58,7 +58,7 @@ jobs:
         path: /home/runner/work/EmployeeManagement/EmployeeManagement/EmployeeManagement.Core/**
         if-no-files-found: error
 
-      #build and push artifact of EmployeeManagement.DataAccess
+      #publish build and push artifact of EmployeeManagement.DataAccess
     - name: Publish EmployeeManagement.DataAccess
       run: dotnet publish EmployeeManagement/EmployeeManagement.DataAccess/EmployeeManagement.DataAccess.csproj -c Release -o EmployeeManagement.DataAccess
     
@@ -69,3 +69,75 @@ jobs:
         path: /home/runner/work/EmployeeManagement/EmployeeManagement/EmployeeManagement.DataAccess/**
         if-no-files-found: error
 
+
+      #publish build and push artifact of RouteManagement.API 
+
+    - name: Publish RouteManagement.API
+      run: dotnet publish RouteManagement/RouteManagement.API/RouteManagement.API.csproj -c Release -o RouteManagement.API
+    
+    - name: Upload a Build RouteManagement.API Artifact
+      uses: actions/upload-artifact@v2.3.1
+      with:
+        name: RouteManagement.API
+        path: /home/runner/work/RouteManagement/RouteManagement/RouteManagement.API/**
+        if-no-files-found: error
+
+      #publish build and push artifact of RouteManagement.Application 
+
+    - name: Publish RouteManagement.Application
+      run: dotnet publish RouteManagement/RouteManagement.Application/RouteManagement.Application.csproj -c Release -o RouteManagement.Application
+    
+    - name: Upload a Build RouteManagement.Application Artifact
+      uses: actions/upload-artifact@v2.3.1
+      with:
+        name: RouteManagement.Application
+        path: /home/runner/work/RouteManagement/RouteManagement/RouteManagement.Application/**
+        if-no-files-found: error
+
+      #publish build and push artifact of RouteManagement.Core 
+
+    - name: Publish RouteManagement.Core
+      run: dotnet publish RouteManagement/RouteManagement.Core/RouteManagement.Core.csproj -c Release -o RouteManagement.Core
+    
+    - name: Upload a Build RouteManagement.Core Artifact
+      uses: actions/upload-artifact@v2.3.1
+      with:
+        name: RouteManagement.Core
+        path: /home/runner/work/RouteManagement/RouteManagement/RouteManagement.Core/**
+        if-no-files-found: error
+
+      #publish build and push artifact of RouteManagement.DataAccess 
+
+    - name: Publish RouteManagement.DataAccess
+      run: dotnet publish RouteManagement/RouteManagement.DataAccess/RouteManagement.DataAccess.csproj -c Release -o RouteManagement.DataAccess
+    
+    - name: Upload a Build RouteManagement.DataAccess Artifact
+      uses: actions/upload-artifact@v2.3.1
+      with:
+        name: RouteManagement.DataAccess
+        path: /home/runner/work/RouteManagement/RouteManagement/RouteManagement.DataAccess/**
+        if-no-files-found: error
+
+    #publish build and push artifact of Utilities 
+
+    - name: Publish Utilities
+      run: dotnet publish Utilities/Utilities.csproj -c Release -o Utilities
+    
+    - name: Upload a Build Utilities Artifact
+      uses: actions/upload-artifact@v2.3.1
+      with:
+        name: Utilities
+        path: /home/runner/work/RouteManagement/RouteManagement/Utilities/**
+        if-no-files-found: error
+
+    #publish build and push artifact of FerryManagement.Web 
+
+    - name: Publish FerryManagement.Web
+      run: dotnet publish WebUI/FerryManagement.Web/FerryManagement.Web.csproj -c Release -o FerryManagement.Web
+    
+    - name: Upload a Build FerryManagement.Webs Artifact
+      uses: actions/upload-artifact@v2.3.1
+      with:
+        name: FerryManagement.Web
+        path: /home/runner/work/RouteManagement/RouteManagement/FerryManagement.Web/**
+        if-no-files-found: error
