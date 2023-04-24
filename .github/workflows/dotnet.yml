@@ -23,5 +23,24 @@ jobs:
       run: dotnet build --no-restore
     - name: Test
       run: dotnet test --no-build --verbosity normal
-    - name: Publish
+      
+    - name: Publish EmployeeManagement.API
       run: dotnet publish EmployeeManagement/EmployeeManagement.API/EmployeeManagement.API.csproj -c Release -o EmployeeManagement.API
+    
+    - name: Upload a Build Artifact
+      uses: actions/upload-artifact@v2.3.1
+      with:
+        name: WebApplication1
+        path: /home/runner/work/EmployeeManagement/EmployeeManagement/EmployeeManagement.API/**
+        if-no-files-found: error
+      
+    - name: Publish EmployeeManagement.API
+      run: dotnet publish Ferry-Management-System/EmployeeManagement/EmployeeManagement.Application/EmployeeManagement.Application.csproj -c Release -o EmployeeManagement.Application
+    
+    - name: Upload a Build Artifact
+      uses: actions/upload-artifact@v2.3.1
+      with:
+        name: WebApplication1
+        path: /home/runner/work/EmployeeManagement/EmployeeManagement/EmployeeManagement.Application/**
+        if-no-files-found: error
+    
