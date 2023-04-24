@@ -24,4 +24,4 @@ jobs:
     - name: Test
       run: dotnet test --no-build --verbosity normal
     - name: Publish
-      run: dotnet publish Ferry-Management-System/EmployeeManagement/EmployeeManagement.API/EmployeeManagement.API.csproj -c Release -o EmployeeManagement.API
+      run: dotnet publish EmployeeManagement/EmployeeManagement.API/EmployeeManagement.API.csproj -c Release -o EmployeeManagement.API
