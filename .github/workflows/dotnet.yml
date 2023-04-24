@@ -35,7 +35,7 @@ jobs:
         if-no-files-found: error
       
     - name: Publish EmployeeManagement.API
-      run: dotnet publish Ferry-Management-System/EmployeeManagement/EmployeeManagement.Application/EmployeeManagement.Application.csproj -c Release -o EmployeeManagement.Application
+      run: dotnet publish EmployeeManagement/EmployeeManagement.Application/EmployeeManagement.Application.csproj -c Release -o EmployeeManagement.Application
     
     - name: Upload a Build Artifact
       uses: actions/upload-artifact@v2.3.1
