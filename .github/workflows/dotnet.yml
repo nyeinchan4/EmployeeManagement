@@ -24,23 +24,48 @@ jobs:
     - name: Test
       run: dotnet test --no-build --verbosity normal
       
+      #build and push artifact of EmployeeManagement.API
     - name: Publish EmployeeManagement.API
       run: dotnet publish EmployeeManagement/EmployeeManagement.API/EmployeeManagement.API.csproj -c Release -o EmployeeManagement.API
     
-    - name: Upload a Build Artifact
+    - name: Upload a Build EmployeeManagement.API Artifact 
       uses: actions/upload-artifact@v2.3.1
       with:
-        name: WebApplication1
+        name: EmployeeManagement.API
         path: /home/runner/work/EmployeeManagement/EmployeeManagement/EmployeeManagement.API/**
         if-no-files-found: error
       
-    - name: Publish EmployeeManagement.API
+      #build and push artifact of EmployeeManagement.Application
+    - name: Publish EmployeeManagement.Application
       run: dotnet publish EmployeeManagement/EmployeeManagement.Application/EmployeeManagement.Application.csproj -c Release -o EmployeeManagement.Application
     
-    - name: Upload a Build Artifact
+    - name: Upload a Build EmployeeManagement.Application Artifact
       uses: actions/upload-artifact@v2.3.1
       with:
-        name: WebApplication1
+        name: EmployeeManagement.Application
         path: /home/runner/work/EmployeeManagement/EmployeeManagement/EmployeeManagement.Application/**
         if-no-files-found: error
+
+      
+      #build and push artifact of EmployeeManagement.Core
+    - name: Publish EmployeeManagement.Core
+      run: dotnet publish EmployeeManagement/EmployeeManagement.Core/EmployeeManagement.Core.csproj -c Release -o EmployeeManagement.Core
     
+    - name: Upload a Build EmployeeManagement.Core Artifact
+      uses: actions/upload-artifact@v2.3.1
+      with:
+        name: EmployeeManagement.Core
+        path: /home/runner/work/EmployeeManagement/EmployeeManagement/EmployeeManagement.Core/**
+        if-no-files-found: error
+
+      #build and push artifact of EmployeeManagement.DataAccess
+    - name: Publish EmployeeManagement.DataAccess
+      run: dotnet publish EmployeeManagement/EmployeeManagement.DataAccess/EmployeeManagement.DataAccess.csproj -c Release -o EmployeeManagement.DataAccess
+    
+    - name: Upload a Build EmployeeManagement.DataAccess Artifact
+      uses: actions/upload-artifact@v2.3.1
+      with:
+        name: EmployeeManagement.DataAccess
+        path: /home/runner/work/EmployeeManagement/EmployeeManagement/EmployeeManagement.DataAccess/**
+        if-no-files-found: error
+
