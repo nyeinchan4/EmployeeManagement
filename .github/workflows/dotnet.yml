@@ -46,26 +46,5 @@ jobs:
         path: /home/runner/work/EmployeeManagement/EmployeeManagement/EmployeeManagement.Application/**
         if-no-files-found: error
 
-      
-      #build and push artifact of EmployeeManagement.Core
-    - name: Publish EmployeeManagement.Core
-      run: dotnet publish EmployeeManagement/EmployeeManagement.Core/EmployeeManagement.Core.csproj -c Release -o EmployeeManagement.Core
     
-    - name: Upload a Build EmployeeManagement.Core Artifact
-      uses: actions/upload-artifact@v2.3.1
-      with:
-        name: EmployeeManagement.Core
-        path: /home/runner/work/EmployeeManagement/EmployeeManagement/EmployeeManagement.Core/**
-        if-no-files-found: error
-
-      #build and push artifact of EmployeeManagement.DataAccess
-    - name: Publish EmployeeManagement.DataAccess
-      run: dotnet publish EmployeeManagement/EmployeeManagement.DataAccess/EmployeeManagement.DataAccess.csproj -c Release -o EmployeeManagement.DataAccess
-    
-    - name: Upload a Build EmployeeManagement.DataAccess Artifact
-      uses: actions/upload-artifact@v2.3.1
-      with:
-        name: EmployeeManagement.DataAccess
-        path: /home/runner/work/EmployeeManagement/EmployeeManagement/EmployeeManagement.DataAccess/**
-        if-no-files-found: error
 
