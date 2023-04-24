@@ -32,6 +32,6 @@ jobs:
     - name: Upload a Build EmployeeManagement.API Artifact 
       uses: actions/upload-artifact@v2.3.1
       with:
-        name: EmployeeManagement.API-${{ github.sha }}
+        name: EmployeeManagement.API-${{ github.sha | slice(0,6) }}
         path: /home/runner/work/EmployeeManagement/EmployeeManagement/EmployeeManagement.API/**
         if-no-files-found: error
