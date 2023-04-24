@@ -24,6 +24,7 @@ jobs:
     - name: Test
       run: dotnet test --no-build --verbosity normal
       
+      #EmployeeManagement
       #publish build and push artifact of EmployeeManagement.API
     - name: Publish EmployeeManagement.API
       run: dotnet publish EmployeeManagement/EmployeeManagement.API/EmployeeManagement.API.csproj -c Release -o EmployeeManagement.API
@@ -69,8 +70,10 @@ jobs:
         path: /home/runner/work/EmployeeManagement/EmployeeManagement/EmployeeManagement.DataAccess/**
         if-no-files-found: error
 
+      #RouteManagement
 
       #publish build and push artifact of RouteManagement.API 
+      # on path use EmployeeManagement/EmployeeManagement - cause artifact store under that dir
 
     - name: Publish RouteManagement.API
       run: dotnet publish RouteManagement/RouteManagement.API/RouteManagement.API.csproj -c Release -o RouteManagement.API
@@ -79,7 +82,7 @@ jobs:
       uses: actions/upload-artifact@v2.3.1
       with:
         name: RouteManagement.API
-        path: /home/runner/work/RouteManagement/RouteManagement/RouteManagement.API/**
+        path: /home/runner/work/EmployeeManagement/EmployeeManagement/RouteManagement.API/**
         if-no-files-found: error
 
       #publish build and push artifact of RouteManagement.Application 
@@ -91,7 +94,7 @@ jobs:
       uses: actions/upload-artifact@v2.3.1
       with:
         name: RouteManagement.Application
-        path: /home/runner/work/RouteManagement/RouteManagement/RouteManagement.Application/**
+        path: /home/runner/work/EmployeeManagement/EmployeeManagement/RouteManagement.Application/**
         if-no-files-found: error
 
       #publish build and push artifact of RouteManagement.Core 
@@ -103,7 +106,7 @@ jobs:
       uses: actions/upload-artifact@v2.3.1
       with:
         name: RouteManagement.Core
-        path: /home/runner/work/RouteManagement/RouteManagement/RouteManagement.Core/**
+        path: /home/runner/work/EmployeeManagement/EmployeeManagement/RouteManagement.Core/**
         if-no-files-found: error
 
       #publish build and push artifact of RouteManagement.DataAccess 
@@ -115,9 +118,10 @@ jobs:
       uses: actions/upload-artifact@v2.3.1
       with:
         name: RouteManagement.DataAccess
-        path: /home/runner/work/RouteManagement/RouteManagement/RouteManagement.DataAccess/**
+        path: /home/runner/work/EmployeeManagement/EmployeeManagement/RouteManagement.DataAccess/**
         if-no-files-found: error
 
+    #Utilities
     #publish build and push artifact of Utilities 
 
     - name: Publish Utilities
@@ -127,9 +131,10 @@ jobs:
       uses: actions/upload-artifact@v2.3.1
       with:
         name: Utilities
-        path: /home/runner/work/RouteManagement/RouteManagement/Utilities/**
+        path: /home/runner/work/EmployeeManagement/EmployeeManagement/Utilities/**
         if-no-files-found: error
 
+    #FerryManagement
     #publish build and push artifact of FerryManagement.Web 
 
     - name: Publish FerryManagement.Web
@@ -139,5 +144,5 @@ jobs:
       uses: actions/upload-artifact@v2.3.1
       with:
         name: FerryManagement.Web
-        path: /home/runner/work/RouteManagement/RouteManagement/FerryManagement.Web/**
+        path: /home/runner/work/EmployeeManagement/EmployeeManagement/FerryManagement.Web/**
         if-no-files-found: error
