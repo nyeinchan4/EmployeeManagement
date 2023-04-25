@@ -27,7 +27,6 @@ jobs:
     - name: Publish EmployeeManagement.API
       run: |
         dotnet publish EmployeeManagement/EmployeeManagement.API/EmployeeManagement.API.csproj -c Release -o '$(Build.ArtifactStagingDirectory)/EmployeeManagement.API'
-        cd $(Build.ArtifactStagingDirectory) && zip -r EmployeeManagement.API.zip EmployeeManagement.API
         
         
     - name: Upload a Build EmployeeManagement.API Artifact 
