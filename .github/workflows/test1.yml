@@ -22,125 +22,16 @@ jobs:
     - name: Build
       run: dotnet build --no-restore
       
-      #EmployeeManagement
+      #Build EmployeeManagement
       #publish build and push artifact of EmployeeManagement.API
     - name: Publish EmployeeManagement.API
-      run: dotnet publish EmployeeManagement/EmployeeManagement.API/EmployeeManagement.API.csproj -c Release -o '$(Build.ArtifactStagingDirectory)/EmployeeManagement.API'
-    
+      run: |
+        dotnet publish EmployeeManagement/EmployeeManagement.API/EmployeeManagement.API.csproj -c Release -o '$(Build.ArtifactStagingDirectory)/EmployeeManagement.API' 
+        zip -r $(Build.ArtifactStagingDirectory)/EmployeeManagement.API.zip $(Build.ArtifactStagingDirectory)/EmployeeManagement.API
+
     - name: Upload a Build EmployeeManagement.API Artifact 
       uses: actions/upload-artifact@v2.3.1
       with:
         name: EmployeeManagement.API
-        path: $(Build.ArtifactStagingDirectory)/EmployeeManagement.API/**
-        if-no-files-found: error
-      
-      #publish build and push artifact of EmployeeManagement.Application
-    - name: Publish EmployeeManagement.Application
-      run: dotnet publish EmployeeManagement/EmployeeManagement.Application/EmployeeManagement.Application.csproj -c Release -o '$(Build.ArtifactStagingDirectory)/EmployeeManagement.Application' 
-    
-    - name: Upload a Build EmployeeManagement.Application Artifact
-      uses: actions/upload-artifact@v2.3.1
-      with:
-        name: EmployeeManagement.Application
-        path: $(Build.ArtifactStagingDirectory)/EmployeeManagement.Application/**
-        if-no-files-found: error
-
-      
-      #publish build and push artifact of EmployeeManagement.Core
-    - name: Publish EmployeeManagement.Core
-      run: dotnet publish EmployeeManagement/EmployeeManagement.Core/EmployeeManagement.Core.csproj -c Release -o '$(Build.ArtifactStagingDirectory)/EmployeeManagement.Core'
-    
-    - name: Upload a Build EmployeeManagement.Core Artifact
-      uses: actions/upload-artifact@v2.3.1
-      with:
-        name: EmployeeManagement.Core
-        path: $(Build.ArtifactStagingDirectory)/EmployeeManagement.Core/**
-        if-no-files-found: error
-
-      #publish build and push artifact of EmployeeManagement.DataAccess
-    - name: Publish EmployeeManagement.DataAccess
-      run: dotnet publish EmployeeManagement/EmployeeManagement.DataAccess/EmployeeManagement.DataAccess.csproj -c Release -o '$(Build.ArtifactStagingDirectory)/EmployeeManagement.DataAccess'
-    
-    - name: Upload a Build EmployeeManagement.DataAccess Artifact
-      uses: actions/upload-artifact@v2.3.1
-      with:
-        name: EmployeeManagement.DataAccess
-        path: $(Build.ArtifactStagingDirectory)/EmployeeManagement.DataAccess/**
-        if-no-files-found: error
-
-      #RouteManagement
-
-      #publish build and push artifact of RouteManagement.API 
-      # on path use EmployeeManagement/EmployeeManagement - cause artifact store under that dir
-
-    - name: Publish RouteManagement.API
-      run: dotnet publish RouteManagement/RouteManagement.API/RouteManagement.API.csproj -c Release -o '$(Build.ArtifactStagingDirectory)/RouteManagement.API'
-    
-    - name: Upload a Build RouteManagement.API Artifact
-      uses: actions/upload-artifact@v2.3.1
-      with:
-        name: RouteManagement.API
-        path: $(Build.ArtifactStagingDirectory)/RouteManagement.API/**
-        if-no-files-found: error
-
-      #publish build and push artifact of RouteManagement.Application 
-
-    - name: Publish RouteManagement.Application
-      run: dotnet publish RouteManagement/RouteManagement.Application/RouteManagement.Application.csproj -c Release -o '$(Build.ArtifactStagingDirectory)/RouteManagement.Application'
-    
-    - name: Upload a Build RouteManagement.Application Artifact
-      uses: actions/upload-artifact@v2.3.1
-      with:
-        name: RouteManagement.Application
-        path: $(Build.ArtifactStagingDirectory)/RouteManagement.Application/**
-        if-no-files-found: error
-
-      #publish build and push artifact of RouteManagement.Core 
-
-    - name: Publish RouteManagement.Core
-      run: dotnet publish RouteManagement/RouteManagement.Core/RouteManagement.Core.csproj -c Release -o '$(Build.ArtifactStagingDirectory)/RouteManagement.Core'
-    
-    - name: Upload a Build RouteManagement.Core Artifact
-      uses: actions/upload-artifact@v2.3.1
-      with:
-        name: RouteManagement.Core
-        path: $(Build.ArtifactStagingDirectory)/RouteManagement.Core/**
-        if-no-files-found: error
-
-      #publish build and push artifact of RouteManagement.DataAccess 
-
-    - name: Publish RouteManagement.DataAccess
-      run: dotnet publish RouteManagement/RouteManagement.DataAccess/RouteManagement.DataAccess.csproj -c Release -o '$(Build.ArtifactStagingDirectory)/RouteManagement.DataAccess'
-    
-    - name: Upload a Build RouteManagement.DataAccess Artifact
-      uses: actions/upload-artifact@v2.3.1
-      with:
-        name: RouteManagement.DataAccess
-        path: $(Build.ArtifactStagingDirectory)/RouteManagement.DataAccess/**
-        if-no-files-found: error
-
-    #Utilities
-    #publish build and push artifact of Utilities 
-
-    - name: Publish Utilities
-      run: dotnet publish Utilities/Utilities.csproj -c Release -o '$(Build.ArtifactStagingDirectory)/Utilities'
-    
-    - name: Upload a Build Utilities Artifact
-      uses: actions/upload-artifact@v2.3.1
-      with:
-        name: Utilities
-        path: $(Build.ArtifactStagingDirectory)/Utilities/**
-        if-no-files-found: error
-
-    #FerryManagement
-    #publish build and push artifact of FerryManagement.Web 
-
-    - name: Publish FerryManagement.Web
-      run: dotnet publish WebUI/FerryManagement.Web/FerryManagement.Web.csproj -c Release -o '$(Build.ArtifactStagingDirectory)/FerryManagement.Web'
-    
-    - name: Upload a Build FerryManagement.Webs Artifact
-      uses: actions/upload-artifact@v2.3.1
-      with:
-        name: FerryManagement.Web
-        path: $(Build.ArtifactStagingDirectory)/FerryManagement.Web/**
+        path: $(Build.ArtifactStagingDirectory)/EmployeeManagement.API.zip
         if-no-files-found: error
