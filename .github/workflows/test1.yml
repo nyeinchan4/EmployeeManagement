@@ -29,8 +29,8 @@ jobs:
   
     - name: zip EmployeeManagement.API art
       run: |
-        cd $GITHUB_WORKSPACE
-        ls
+        cd $GITHUB_WORKSPACE 
+        zip -r EmployeeManagement.API.zip EmployeeManagement.API
      #tar -cvzf EmployeeManagement.API.tar.gz EmployeeManagement.API
         
 
