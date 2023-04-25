@@ -25,11 +25,11 @@ jobs:
       #Build EmployeeManagement
       #publish build and push artifact of EmployeeManagement.API
     - name: Publish EmployeeManagement.API
-      run:  dotnet publish EmployeeManagement/EmployeeManagement.API/EmployeeManagement.API.csproj -c Release -o "$(Build.ArtifactStagingDirectory)/EmployeeManagement.API"
+      run:  dotnet publish EmployeeManagement/EmployeeManagement.API/EmployeeManagement.API.csproj -c Release -o ${{ GITHUB_WORKSPACE }}/EmployeeManagement.API"
   
     - name: zip EmployeeManagement.API art
       run: |
-        cd /home/runner/work/EmployeeManagement/EmployeeManagement/$(Build.ArtifactStagingDirectory)
+        cd ${{ GITHUB_WORKSPACE }} 
         ls
      #tar -cvzf EmployeeManagement.API.tar.gz EmployeeManagement.API
         
