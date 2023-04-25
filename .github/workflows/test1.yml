@@ -28,11 +28,6 @@ jobs:
       run:  dotnet publish EmployeeManagement/EmployeeManagement.API/EmployeeManagement.API.csproj -c Release -o '$(Build.ArtifactStagingDirectory)/EmployeeManagement.API'
     
     - name: zip EmployeeManagement.API art
-      run: cd $(Build.ArtifactStagingDirectory) && zip -r EmployeeManagement.API.zip EmployeeManagement.API
+      run: pwd
         
-    - name: Upload a Build EmployeeManagement.API Artifact 
-      uses: actions/upload-artifact@v2.3.1
-      with:
-        name: EmployeeManagement.API
-        path: $(Build.ArtifactStagingDirectory)/EmployeeManagement.API.zip
-        if-no-files-found: error
+
