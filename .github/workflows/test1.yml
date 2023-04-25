@@ -28,6 +28,6 @@ jobs:
       run:  dotnet publish EmployeeManagement/EmployeeManagement.API/EmployeeManagement.API.csproj -c Release -o '$(Build.ArtifactStagingDirectory)/EmployeeManagement.API'
     
     - name: zip EmployeeManagement.API art
-      run: pwd
+      run: zip EmployeeManagement.API.zip /home/runner/work/EmployeeManagement/EmployeeManagement/$(Build.ArtifactStagingDirectory)/EmployeeManagement.API
         
 
