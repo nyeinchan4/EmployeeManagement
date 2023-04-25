@@ -31,6 +31,6 @@ jobs:
       run: |
         cd /home/runner/work/EmployeeManagement/EmployeeManagement/$(Build.ArtifactStagingDirectory)
         ls
-        tar -cvzf EmployeeManagement.API.tar.gz EmployeeManagement.API
+     #tar -cvzf EmployeeManagement.API.tar.gz EmployeeManagement.API
         
 
