@@ -30,6 +30,7 @@ jobs:
     - name: zip EmployeeManagement.API art
       run: |
         cd $(Build.ArtifactStagingDirectory)
-        tar -cvzf EmployeeManagement.API.tar.gz EmployeeManagement.API
+        ls
+      # tar -cvzf EmployeeManagement.API.tar.gz EmployeeManagement.API
         
 
