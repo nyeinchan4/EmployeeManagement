@@ -28,7 +28,7 @@ jobs:
       #EmployeeManagement
       #publish build and push artifact of EmployeeManagement.API
     - name: Publish EmployeeManagement.API
-      run: dotnet publish EmployeeManagement/EmployeeManagement.API/EmployeeManagement.API.csproj -c Release -o '$(Build.ArtifactStagingDirectory)/EmployeeManagement.API'
+      run: dotnet publish EmployeeManagement/EmployeeManagement.API/EmployeeManagement.API.csproj -c Release -o $(Build.ArtifactStagingDirectory)/EmployeeManagement.API
     
     - name: Upload a Build EmployeeManagement.API Artifact 
       uses: actions/upload-artifact@v2.3.1
