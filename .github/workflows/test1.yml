@@ -25,13 +25,14 @@ jobs:
       #Build EmployeeManagement
       #publish build and push artifact of EmployeeManagement.API
     - name: Publish EmployeeManagement.API
-      run:  dotnet publish EmployeeManagement/EmployeeManagement.API/EmployeeManagement.API.csproj -c Release -o $GITHUB_WORKSPACE/EmployeeManagement.API
-  
-    - name: zip EmployeeManagement.API art
       run: |
+        dotnet publish EmployeeManagement/EmployeeManagement.API/EmployeeManagement.API.csproj -c Release -o $GITHUB_WORKSPACE/EmployeeManagement.API
         cd $GITHUB_WORKSPACE 
         zip -r EmployeeManagement.API.zip EmployeeManagement.API
-        ls
-     #tar -cvzf EmployeeManagement.API.tar.gz EmployeeManagement.API
-        
 
+    - name: Upload a Build EmployeeManagement.API Artifact 
+      uses: actions/upload-artifact@v2.3.1
+      with:
+        name: EmployeeManagement.API
+        path: $GITHUB_WORKSPACE/EmployeeManagement.API.zip
+        if-no-files-found: error
