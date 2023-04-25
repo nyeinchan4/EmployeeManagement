@@ -25,7 +25,7 @@ jobs:
       #Build EmployeeManagement
       #publish build and push artifact of EmployeeManagement.API
     - name: Publish EmployeeManagement.API
-      run:  dotnet publish EmployeeManagement/EmployeeManagement.API/EmployeeManagement.API.csproj -c Release -o ${{ GITHUB_WORKSPACE }}/EmployeeManagement.API"
+      run:  dotnet publish EmployeeManagement/EmployeeManagement.API/EmployeeManagement.API.csproj -c Release -o ${{ github_workspace }}/EmployeeManagement.API"
   
     - name: zip EmployeeManagement.API art
       run: |
