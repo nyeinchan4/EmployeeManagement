@@ -76,7 +76,7 @@ jobs:
       # on path use EmployeeManagement/EmployeeManagement - cause artifact store under that dir
 
     - name: Publish RouteManagement.API
-      run: dotnet publish RouteManagement/RouteManagement.API/RouteManagement.API.csproj -c Release -o RouteManagement.API
+      run: dotnet publish RouteManagement/RouteManagement.API/RouteManagement.API.csproj -c Release -o /home/runner/work/RouteManagement/RouteManagement/RouteManagement.API/
     
     - name: Upload a Build RouteManagement.API Artifact
       uses: actions/upload-artifact@v2.3.1
