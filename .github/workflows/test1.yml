@@ -6,7 +6,7 @@ on:
   pull_request:
     branches: [ "main" ]
 env:
-  routemanagement_publish_path : /home/runner/work/RouteManagement/RouteManagement/RouteManagement.API
+  routemanagement_publish_path : /home/runner/work/RouteManagement/RouteManagement
 jobs:
 
   build:
@@ -77,13 +77,13 @@ jobs:
       # on path use EmployeeManagement/EmployeeManagement - cause artifact store under that dir
 
     - name: Publish RouteManagement.API
-      run: dotnet publish RouteManagement/RouteManagement.API/RouteManagement.API.csproj -c Release -o $routemanagement_publish_path
+      run: dotnet publish RouteManagement/RouteManagement.API/RouteManagement.API.csproj -c Release -o $routemanagement_publish_path/RouteManagement.API
     
     - name: Upload a Build RouteManagement.API Artifact
       uses: actions/upload-artifact@v2.3.1
       with:
         name: RouteManagement.API
-        path: /home/runner/work/RouteManagement/RouteManagement/RouteManagement.API/**
+        path: $routemanagement_publish_path/RouteManagement.API/RouteManagement.API/**
         if-no-files-found: error
 
       #publish build and push artifact of RouteManagement.Application 
