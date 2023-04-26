@@ -20,7 +20,7 @@ jobs:
     - name: Restore dependencies
       run: dotnet restore
     - name: Build
-      run: dotnet abuild --no-restore
+      run: dotnet build --no-restore
       
       #publish EmployeeManagement
       #publish EmployeeManagement.API
@@ -113,6 +113,7 @@ jobs:
 
     #Deploy EmployeeManagement
 
+  jobs:
   deploy:
     needs: build
     runs-on: ubuntu-latest
