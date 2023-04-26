@@ -23,23 +23,93 @@ jobs:
       run: dotnet build --no-restore
       
       #Build EmployeeManagement
-      #publish build and push artifact of EmployeeManagement.API
+      #build EmployeeManagement.API
     - name: Publish EmployeeManagement.API
       run: |
         dotnet publish EmployeeManagement/EmployeeManagement.API/EmployeeManagement.API.csproj -c Release -o $GITHUB_WORKSPACE/EmployeeManagement.API
         cd $GITHUB_WORKSPACE 
         zip -r EmployeeManagement.API.zip cd $GITHUB_WORKSPACE/EmployeeManagement.API
-
-      #publish build and push artifact of EmployeeManagement.Application
+    
+      #build EmployeeManagement.Application
     - name: Publish EmployeeManagement.Application
       run: | 
         dotnet publish EmployeeManagement/EmployeeManagement.Application/EmployeeManagement.Application.csproj -c Release -o $GITHUB_WORKSPACE/EmployeeManagement.Application 
         cd $GITHUB_WORKSPACE
         zip -r EmployeeManagement.Application.zip $GITHUB_WORKSPACE/EmployeeManagement.Application
-    
-    - name: Upload a Build EmployeeManagement.Application Artifact
+      
+      #build EmployeeManagement.Core
+    - name: Publish EmployeeManagement.Core
+      run: | 
+        dotnet publish EmployeeManagement/EmployeeManagement.Core/EmployeeManagement.Core.csproj -c Release -o $GITHUB_WORKSPACE/EmployeeManagement.Core
+        cd $GITHUB_WORKSPACE
+        zip -r EmployeeManagement.Core.zip $GITHUB_WORKSPACE/EmployeeManagement.Core
+
+      #build EmployeeManagement.DataAccess
+    - name: Publish EmployeeManagement.DataAccess
+      run: | 
+        dotnet publish EmployeeManagement/EmployeeManagement.DataAccess/EmployeeManagement.DataAccess.csproj -c Release -o $GITHUB_WORKSPACE/EmployeeManagement.DataAccess
+        cd $GITHUB_WORKSPACE
+        zip -r EmployeeManagement.DataAccess.zip $GITHUB_WORKSPACE/EmployeeManagement.DataAccess
+
+      #RouteManagement
+
+      #build RouteManagement.API
+
+    - name: Publish RouteManagement.API
+      run: |
+        dotnet publish RouteManagement/RouteManagement.API/RouteManagement.API.csproj -c Release -o $GITHUB_WORKSPACE/RouteManagement.API
+        cd $GITHUB_WORKSPACE
+        zip -r RouteManagement.API.zip $GITHUB_WORKSPACE/RouteManagement.API
+
+      #build RouteManagement.Application 
+
+    - name: Publish RouteManagement.Application
+      run: | 
+        dotnet publish RouteManagement/RouteManagement.Application/RouteManagement.Application.csproj -c Release -o $GITHUB_WORKSPACE/RouteManagement.Application
+        cd $GITHUB_WORKSPACE
+        zip -r RouteManagement.Application.zip $GITHUB_WORKSPACE/RouteManagement.Application
+
+      #build RouteManagement.Core 
+
+    - name: Publish RouteManagement.Core
+      run: |
+        dotnet publish RouteManagement/RouteManagement.Core/RouteManagement.Core.csproj -c Release -o $GITHUB_WORKSPACE/RouteManagement.Core
+        cd $GITHUB_WORKSPACE
+        zip -r RouteManagement.Core.zip $GITHUB_WORKSPACE/RouteManagement.Core
+
+      #build RouteManagement.DataAccess 
+
+    - name: Publish RouteManagement.DataAccess
+      run: |
+        dotnet publish RouteManagement/RouteManagement.DataAccess/RouteManagement.DataAccess.csproj -c Release -o $GITHUB_WORKSPACE/RouteManagement.DataAccess
+        cd $GITHUB_WORKSPACE
+        zip -r RouteManagement.DataAccess.zip $GITHUB_WORKSPACE/RouteManagement.DataAccess
+
+    #Utilities
+    # build  Utilities 
+
+    - name: Publish Utilities
+      run: | 
+        dotnet publish Utilities/Utilities.csproj -c Release -o $GITHUB_WORKSPACE/Utilities
+        cd $GITHUB_WORKSPACE
+        zip -r Utilities.zip $GITHUB_WORKSPACE/Utilities
+
+    #FerryManagement
+    # build FerryManagement.Web 
+
+    - name: Publish FerryManagement.Web
+      run: | 
+        dotnet publish WebUI/FerryManagement.Web/FerryManagement.Web.csproj -c Release -o $GITHUB_WORKSPACE/FerryManagement.Web
+        cd $GITHUB_WORKSPACE
+        zip -r FerryManagement.Web.zip $GITHUB_WORKSPACE/FerryManagement.Web
+
+      #Upload Ferry-Management-System-Zip Artifact
+    - name: Upload Ferry-Management-System-Zip Artifact
       uses: actions/upload-artifact@v2.3.1
       with:
-        name: EmployeeManagement.Application
+        name: Ferry-Management-System-Zip
         path: /home/runner/work/EmployeeManagement/EmployeeManagement/*.zip
         if-no-files-found: error
+
+    #Deploy EmployeeManagement
+
