@@ -126,3 +126,33 @@ jobs:
 
       - name: check file
         run: cd /home/runner/work/EmployeeManagement/EmployeeManagement && ls
+
+      - name: Copy via ssh 
+        uses: garygrossgarten/github-action-scp@v0.8.0
+        with:
+          local: /home/runner/work/EmployeeManagement/EmployeeManagement/*
+          remote: /home/azureuser/Ferry-Management-System-Zip
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          password: ${{ secrets.PASSWORD }}
+          port: 22
+       
+      - name: executing remote ssh commands using password
+        uses: appleboy/ssh-action@v0.1.10
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          password: ${{ secrets.PASSWORD }}
+          port: 22
+          script: |
+            cd /home/azureuser/Ferry-Management-System-Zip  && \
+            unzip \*.zip && \
+            rm -rf *.zip && \
+            mv EmployeeManagement.API EmployeeManagement.Application \
+            EmployeeManagement.Core EmployeeManagement.DataAccess \
+            /home/azureuser/Ferry-Management-System/EmployeeManagement/ && \
+            mv RouteManagement.API RouteManagement.Application \
+            RouteManagement.Core RouteManagement.DataAccess \
+            /home/azureuser/Ferry-Management-System/RouteManagement && \
+            mv Utilities /home/azureuser/Ferry-Management-System && \
+            mv FerryManagement.Web /home/azureuser/Ferry-Management-System/WebUI
