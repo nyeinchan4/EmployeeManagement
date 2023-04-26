@@ -137,4 +137,12 @@ jobs:
           password: ${{ secrets.PASSWORD }}
           port: 22
        
+      - name: executing remote ssh commands using password
+        uses: appleboy/ssh-action@v0.1.10
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          password: ${{ secrets.PASSWORD }}
+          port: 22
+          script: bash /home/azureuser/cdscript.sh
    
