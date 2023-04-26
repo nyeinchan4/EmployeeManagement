@@ -144,5 +144,5 @@ jobs:
           username: ${{ secrets.USERNAME }}
           password: ${{ secrets.PASSWORD }}
           port: 22
-          script: cd && bash cdscript.sh
+          script: cd /home/azureuser && bash cdscript.sh
    
