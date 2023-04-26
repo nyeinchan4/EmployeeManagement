@@ -130,7 +130,7 @@ jobs:
       - name: Copy via ssh 
         uses: garygrossgarten/github-action-scp@v0.8.0
         with:
-          local: /home/runner/work/EmployeeManagement/EmployeeManagement/*.zip
+          local: /home/runner/work/EmployeeManagement/EmployeeManagement
           remote: /home/azureuser/Ferry-Management-System-Zip
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
