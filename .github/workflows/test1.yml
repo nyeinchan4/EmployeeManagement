@@ -124,4 +124,4 @@ jobs:
           name: Ferry-Management-System-Zip
 
       - name: check file
-        run: cd /home/runner/work/Ferry-Management-System/Ferry-Management-System-Zip/ && ls
+        run: cd /home/runner/work/Ferry-Management-System/ && ls
