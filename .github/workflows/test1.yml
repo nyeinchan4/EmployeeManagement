@@ -113,3 +113,15 @@ jobs:
 
     #Deploy EmployeeManagement
 
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Download Ferry-Management-System-Zip Artifact
+        uses: actions/download-artifact@v2
+        with:
+          name: Ferry-Management-System-Zip
+
+      - name: check file
+        run: cd /home/runner/work/Ferry-Management-System/Ferry-Management-System-Zip/ && ls
