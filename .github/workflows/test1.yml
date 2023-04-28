@@ -144,6 +144,23 @@ jobs:
           username: ${{ secrets.USERNAME }}
           password: ${{ secrets.PASSWORD }}
           port: 22
-          script: cd && bash cdscript.sh
+          script: |
+            cd && \
+            rm -rf /home/azureuser/Ferry-Management-System/EmployeeManagement/* && \
+            rm -rf /home/azureuser/Ferry-Management-System/RouteManagement/* && \
+            rm -rf /home/azureuser/Ferry-Management-System/Utilities && \
+            rm -rf /home/azureuser/Ferry-Management-System/WebUI/* && \
+            cd /home/azureuser/Ferry-Management-System-Zip  && \
+            unzip \*.zip && \
+            rm -rf *.zip && \
+            mv EmployeeManagement.API EmployeeManagement.Application \
+            EmployeeManagement.Core EmployeeManagement.DataAccess \
+            /home/azureuser/Ferry-Management-System/EmployeeManagement/ && \
+            mv RouteManagement.API RouteManagement.Application \
+            RouteManagement.Core RouteManagement.DataAccess \
+            /home/azureuser/Ferry-Management-System/RouteManagement && \
+            mv Utilities /home/azureuser/Ferry-Management-System && \
+            mv FerryManagement.Web /home/azureuser/Ferry-Management-System/WebUI 
+            
           
   
