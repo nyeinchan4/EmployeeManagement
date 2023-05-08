@@ -6,3 +6,10 @@ on:
       name:
         description: "Who to greet"
         default: "World"
+
+jobs:
+    hello:
+        runs-on: ubuntu-latest
+        steps:
+          - name: Hello Step
+            run: echo "Hello"
