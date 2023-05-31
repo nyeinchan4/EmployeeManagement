@@ -2,14 +2,15 @@ name: Manual trigger
 
 on:
   workflow_dispatch:
-    inputs:
-      name:
-        description: "Who to greet"
-        default: "World"
+
 
 jobs:
-    hello:
-        runs-on: ubuntu-latest
-        steps:
-          - name: Hello Step
-            run: echo "Hello"
+  my-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Notify on Workflow Status
+        uses: microsoft/teams-notification@v1
+        with:
+          webhook-url: ${{ secrets.MICROSOFT_TEAMS_WEBHOOK_URL }}
+          status: ${{ job.status }}
+          include-jobs: "my-job"
