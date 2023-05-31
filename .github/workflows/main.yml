@@ -12,8 +12,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Notify on Workflow Status
-        uses: microsoft/teams-notification@v1
-        with:
-          webhook-url: ${{ secrets.MICROSOFT_TEAMS_WEBHOOK_URL }}
-          status: ${{ job.status }}
-          include-jobs: "my-job"
+        run: |
+          curl -H "Content-Type: application/json" -X POST -d '{
+            "text": "Workflow Status: ${{ job.status }}",
+            "title": "Workflow Notification",
+            "themeColor": "0072C6"
+          }' ${{ secrets.MICROSOFT_TEAMS_WEBHOOK_URL }}
